@@ -8,7 +8,7 @@ describe "Pokemon" do
     @sql_runner.execute_schema_migration_sql
   end
 
-  let(:pokemon) {Pokemon.new(id: 1, name: "Pikachu", type: "electric", db: @db)}
+  let(:pokemon) {Pokemon.new(id: 1, name: "Pikachu", type: "electric", db: @db, hp: 60)}
 
   describe ".initialize" do
     it 'is initialized with keyword arguments of name, type and db' do
@@ -16,15 +16,16 @@ describe "Pokemon" do
       expect(pokemon).to respond_to(:name)
       expect(pokemon).to respond_to(:type)
       expect(pokemon).to respond_to(:db)
+      expect(pokemon).to respond_to(:hp)
     end
   end
 
   xdescribe ".save" do
     it 'saves an instance of a pokemon with the correct id' do
-      Pokemon.save("Pikachu", "electric", @db)
+      Pokemon.save("Pikachu", "electric", @db, 60)
 
       pikachu_from_db = @db.execute("SELECT * FROM pokemon WHERE name = 'Pikachu'")
-      expect(pikachu_from_db).to eq([[1, "Pikachu", "electric"]])
+      expect(pikachu_from_db).to eq([[1, "Pikachu", "electric", 60]])
     end
   end
 
