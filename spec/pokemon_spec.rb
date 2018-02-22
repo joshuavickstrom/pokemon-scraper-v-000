@@ -32,7 +32,7 @@ describe "Pokemon" do
   describe ".find" do
     it 'finds a pokemon from the database by their id number and returns a new Pokemon object' do
       # The find method creates a new Pokemon after selecting their row from the database by their id number.
-      Pokemon.save("Pikachu", "electric", @db)
+      Pokemon.save("Pikachu", "electric", @db, 60)
 
       pikachu_from_db = Pokemon.find(1, @db)
       expect(pikachu_from_db.id).to eq(1)
