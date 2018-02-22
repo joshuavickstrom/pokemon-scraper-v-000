@@ -16,7 +16,7 @@ attr_accessor :id, :name, :type, :db
 
   def self.find(idnum, db)
     info = db.execute("SELECT * FROM pokemon WHERE pokemon.id = ?", idnum).flatten
-    self.new(id:info[0], name:info[1], type:info[2])
+    self.new(id:info[0], name:info[1], type:info[2], db:db)
   end
 
 end
