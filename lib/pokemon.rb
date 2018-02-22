@@ -13,7 +13,7 @@ attr_accessor :id, :name, :type, :db
     db.execute("INSERT INTO pokemon (name, type) VALUES (?, ?)", name, type)
   end
 
-  def self.find
+  def self.find(id, db)
     db.execute("SELECT pokemon.id, pokemon.name FROM pokemon WHERE pokemon.id = pokemon.id")
   end
 
